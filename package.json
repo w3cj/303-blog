@@ -9,8 +9,11 @@
     "lint": "eslint test src",
     "audit": "snyk test",
     "test": "./scripts/testSetup.sh && NODE_ENV=test mocha -w",
-    "db:migrate": "knex migrate:latest",
-    "db:seed": "knex seed:run"
+    "migrate": "knex migrate:latest",
+    "seed": "knex seed:run",
+    "doc": "node scripts/jsonifySchemas.js && apidoc -i src/api/ -o doc/ && npm run doc-md && npm run readme",
+    "doc-md": "apidoc-markdown2 -p doc/ -o API_DOC.md -t doc/API_DOC_TEMPLATE.md",
+    "readme": "cat SETUP.md API_DOC.md > README.md"
   },
   "keywords": [],
   "author": "CJ R. <cj@null.computer> (https://w3cj.now.sh)",
@@ -20,6 +23,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "apidoc-markdown2": "^0.3.7",
     "dotenv": "^6.0.0",
     "express": "^4.16.3",
     "helmet": "^3.13.0",
@@ -29,6 +33,9 @@
     "pg": "^7.4.3"
   },
   "devDependencies": {
+    "apidoc": "^0.17.6",
+    "apidoc-plugin-example": "^0.2.0",
+    "apidoc-plugin-schema": "^0.1.8",
     "chai": "^4.1.2",
     "eslint": "^5.4.0",
     "eslint-config-airbnb-base": "^13.1.0",
