@@ -1,0 +1,1 @@
+dropdb --if-exists 303_blog_test && createdb 303_blog_test

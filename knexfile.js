@@ -1,12 +1,12 @@
 require('./loadEnv')();
 
-module.exports = {
-  development: {
+function createConfig(database, user, password) {
+  return {
     client: 'pg',
     connection: {
-      database: process.env.DB_NAME,
-      user: process.env.DB_USER,
-      password: process.env.DB_PASS,
+      database,
+      user,
+      password,
     },
     migrations: {
       directory: './src/db/migrations',
@@ -14,5 +14,18 @@ module.exports = {
     seeds: {
       directory: './src/db/seeds',
     },
-  },
+  };
+}
+
+module.exports = {
+  development: createConfig(
+    process.env.DB_NAME,
+    process.env.DB_USER,
+    process.env.DB_PASS,
+  ),
+  test: createConfig(
+    process.env.DB_NAME,
+    process.env.DB_USER,
+    process.env.DB_PASS,
+  ),
 };

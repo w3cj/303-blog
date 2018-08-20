@@ -1,6 +1,7 @@
 module.exports = {
   type: 'object',
   additionalProperties: false,
+  required: ['title', 'author', 'content'],
   properties: {
     title: {
       type: 'string',
