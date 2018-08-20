@@ -1,9 +1,9 @@
 
 exports.up = knex => knex.schema.createTable('post', (table) => {
   table.increments();
-  table.string('text', 200);
-  table.string('author', 50);
-  table.text('content');
+  table.string('title', 200).notNullable();
+  table.string('author', 50).notNullable();
+  table.text('content').notNullable();
 });
 
-exports.down = knex => knex.schema.dropTable('posts');
+exports.down = knex => knex.schema.dropTable('post');
