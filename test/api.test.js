@@ -4,6 +4,7 @@ const { expect } = require('chai');
 const app = require('../src/app');
 const connection = require('../src/db/connection');
 const examplePost = require('./fixtures/post');
+const examplePosts = require('../src/db/examples/posts');
 
 describe('GET /api/v1', () => {
   it('responds with a json message', (done) => {
@@ -86,6 +87,20 @@ describe('/api/v1/posts', () => {
         .expect(404)
         .then(({ body }) => {
           expect(body.message).to.equal('Post not found');
+          done();
+        });
+    });
+  });
+
+  describe('GET /api/v1/posts', () => {
+    it('responds with a json array', (done) => {
+      request(app)
+        .get('/api/v1/posts')
+        .set('Accept', 'application/json')
+        .expect('Content-Type', /json/)
+        .expect(200)
+        .then(({ body }) => {
+          expect(body).to.deep.equal(examplePosts);
           done();
         });
     });

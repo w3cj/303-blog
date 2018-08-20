@@ -26,6 +26,22 @@ router.post('/', async (req, res, next) => {
 });
 
 /**
+ * @api {get} /posts Get all posts
+ * @apiName GetPosts
+ * @apiGroup Posts
+ * @apiExample {json=../db/schemas/examples/postArray.json} apiSuccessExample Response JSON
+ */
+router.get('/', async (req, res, next) => {
+  try {
+    const result = await Post.query();
+
+    res.json(result);
+  } catch (error) {
+    next(error);
+  }
+});
+
+/**
  * @api {get} /posts/:id Get one post by ID
  * @apiName GetPost
  * @apiGroup Posts
