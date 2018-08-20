@@ -9,7 +9,8 @@
     "lint": "eslint test src",
     "audit": "snyk test",
     "test": "mocha -w",
-    "db:migrate": "knex migrate:latest"
+    "db:migrate": "knex migrate:latest",
+    "db:seed": "knex seed:run"
   },
   "keywords": [],
   "author": "CJ R. <cj@null.computer> (https://w3cj.now.sh)",

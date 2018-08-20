@@ -1,0 +1,78 @@
+module.exports = [{
+  id: 1,
+  title: 'Using the Testing Maturity Model to improve Quality Assurance Process',
+  author: 'Sajitha Ramachandra Menon',
+  content: `The Testing Maturity Model is a great framework for improving an organization’s testing and Quality Assurance process to make sure that projects are delivered on time and within the client’s budget.
+
+  Being that reliability and providing high-quality deliverables are key values of 303 Software, we put the Testing Maturity Model to use for adopting the best practices for our testing process.
+  
+  The Testing Maturity Model, developed by the Illinois Institute of Technology, follows a staged architecture for creating models that improve the testing process. The key focus in creating this staged architecture is to evolve an organization’s testing process from being unmanaged and ad hoc to one that is managed, defined, measured, and optimizable.`,
+}, {
+  id: 2,
+  title: 'iOS Development - Using FastLane to Cut Through App Store Traffic.',
+  author: 'Chris Chares',
+  content: `Building an app is great. Publishing an app is not.
+
+  Building an app is great. Publishing an app is not. Despite all the great apps available on the App Store, it’s often difficult to publish an app on the store due to Apple’s extremely specific requirements. This creates quite a few protracted hours spent putting all of the requirements together so we can actually publish the app we’ve spent the last few months working on.
+  
+  For the Android market, publishing is simple. So simple that if we built an Android app and wanted to give it to somebody, it would be as easy as sending the file to them in an email and them opening it up on their device.
+  
+  With Apple, however, the process is much more stringent. Because all iOS apps are only distributed through Apple’s proprietary App Store, there is a specific approval process that each app has to go through in order for users to start downloading it. The process includes adding metadata to the app (everything from the primary language of the app to the SKU), creating a beta build of the app for review, uploading screenshots of the app on different devices, and answering a bazillion questions about compliance, content, and platform version. Even after gathering all of these different pieces together and submitting it for review, we then usually have to cross our fingers and see what Apple says, and there’s no guarantee that they’ll approve it (although we’ve learned many a trick over the years to help ensure a quicker path to approval).`,
+}, {
+  id: 3,
+  title: 'How to Build a Great Pair-Programming Room',
+  author: 'Chase Foster',
+  content: `Pair-programming is a great tool for programming teams to utilize, but it’s rare that anyone has a handy guide for what makes a great pair-programming room.
+
+  We’ve come up with a list of some of the ways we optimize our pair-programming rooms, which hopefully you can use in your own pair-programming setup.
+  
+  For those unfamiliar with pair-programming, it is essentially a way for more than one developer to tackle some kind of code problem together. This can be as small as figuring out how to get a specific function to return a specific value, or as large as mapping out an entire application’s architecture. Programmers benefit from being able to verbally describe a piece of code to another developer, which helps them work through the problem as well as get feedback from the other developer. 
+  
+  Below is one of our pair-programming rooms, with some of the custom tools we use to maximize productivity.`,
+}, {
+  id: 4,
+  title: 'Blades of Grass: Thoughts on Leadership and Japanese Kaizen',
+  author: 'Derek Taniguchi',
+  content: `Based on the Japanese Kaizen, continuous improvement is about making sure that we are all improving every aspect of our company together.
+
+  The key to any company’s success is that everyone within the organization heads in the same direction together. A company can most effectively improve as a unit if the Project Managers share the same direction as the Software Developers, the Sales staff, as well as the company Founders. We constantly work for this unity of a shared vision at 303 Software.
+  
+  One of our core values at 303 Software is that we improve continuously. Based on the Japanese business philosophy of Kaizen, continuous improvement is about making sure that we are all improving every aspect of our company together. It sounds obvious, but it’s not always that easy to establish. There are constant challenges with this approach and with everything we do that we must always consider. This is not only defined by how we manage projects and software, but also seemingly simple details like the kinds of wires we use to power our machines.`,
+}, {
+  id: 5,
+  title: 'Why Your Friendly Neighborhood Dev Shops Thrive in a Product-Driven World',
+  author: 'Nick DeCesare',
+  content: `Any business would — and should — tell you they’re customer-driven. 
+  But with the ever-growing presence of product-driven web services, how do you know when it’s time to use a pre-fab app versus working with a team of developers to build the site of your dreams? The bottom line: A product-driven option will get you what you need, but a dev shop can really dig into what you want. Here’s why.
+   
+  Building From the Bottom Up
+  
+  Let’s say you’re in the market for a house. Your options are wide open, so you’re not sure where to begin. (I know this is Denver, but bear with me here.)
+  
+  You know your basic needs: four walls, a roof, and, hey, some doors and windows would be nice. For the sake of ease, you buy a new home in a subdivision. The house is fine: it’s totally functional, moving in was a snap, and you even got to pick the paint colors.
+  
+  Now let’s say you’ve got a clear vision of what your house could look like. You want lots of customizations: massive kitchen, an indoor slide, a ball pit — whatever you can dream up. It sounds like you’re aiming for a Chuck E. Cheese™, by the way, but I’m not here to judge.
+  
+  To achieve your exact vision, you have to work one-on-one with a builder. That way, you get the features, quality, and overall results you’re looking for. That level of control and customization is what you get with a dev shop.`,
+}, {
+  id: 6,
+  title: 'Thoughts on Flutter: Another Cross-Platform Solution for Mobile Apps.',
+  author: 'Sean Kladek',
+  content: `tl;dr: Flutter offers another cross-platform solution for mobile apps. It is only intended for the UI layer and makes use of native controls with a centralized API so you can write once and use actual native controls on both platforms as opposed to an HTML/CSS solution (more like React Native than PhoneGap).
+
+  The biggest risk with this solution is that it is still in beta and is very new. There will be many bugs to work out — and I'm not holding my breath that this one will be any different from its predecessors. Read on to see why.
+  
+   
+  Pros:
+  
+      Simplified reload. Stateful Hot Reload allows for making code changes and reloading the app without having to go through the compilation process. Compiling usually takes around 10-20 seconds each time depending on app size and some other factors.
+  
+      Uses native UI objects. This is in place of a webview with HTML/CSS. Using native UI objects allows views to be constructed with native views already familiar to the user. They’re also maintained by each platform, meaning less upkeep for your team.
+  
+      Multiple IDE integrations. Flutter integrates with existing IDEs including Xcode, Android Studio, IntelliJ, and AppCode, allowing your developers to use tools they already know.
+  
+      Created by Google. It will likely receive frequent and high-quality updates.
+  
+      Geared for rapid development. These are claims at the moment, but other cross-platform solutions claim the same and it rarely pans out. The final optimizations and bug fixes on those solutions tend to take much longer than just building native.
+  `,
+}];
