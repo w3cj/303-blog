@@ -2,7 +2,7 @@ const express = require('express');
 const morgan = require('morgan');
 const helmet = require('helmet');
 
-require('dotenv').config();
+require('../loadEnv')();
 
 const middlewares = require('./middlewares');
 const api = require('./api');
