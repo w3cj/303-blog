@@ -4,6 +4,22 @@ const router = express.Router();
 
 const { Post } = require('../db');
 
+async function postExists(req, res, next) {
+  const { id } = req.params;
+  const post = await Post
+    .query()
+    .where({ id })
+    .first();
+
+  if (post) {
+    next();
+  } else {
+    res.status(404);
+    const error = new Error('Post not found');
+    next(error);
+  }
+}
+
 /**
  * @api {post} /posts Create a post
  * @apiName AddPost
@@ -55,21 +71,15 @@ router.get('/', async (req, res, next) => {
  *       "message": "Post not found"
  *     }
  */
-router.get('/:id', async (req, res, next) => {
+router.get('/:id', postExists, async (req, res, next) => {
   try {
     const { id } = req.params;
-    const result = await Post
+    const post = await Post
       .query()
       .where({ id })
       .first();
 
-    if (result) {
-      res.json(result);
-    } else {
-      res.status(404);
-      const error = new Error('Post not found');
-      next(error);
-    }
+    res.json(post);
   } catch (error) {
     next(error);
   }
@@ -91,27 +101,16 @@ router.get('/:id', async (req, res, next) => {
  *       "message": "Post not found"
  *     }
  */
-router.post('/:id', async (req, res, next) => {
+router.post('/:id', postExists, async (req, res, next) => {
   try {
     const { id } = req.params;
-    const post = await Post
+    const result = await Post
       .query()
+      .update(req.body)
       .where({ id })
-      .first();
+      .returning('*');
 
-    if (post) {
-      const result = await Post
-        .query()
-        .update(req.body)
-        .where({ id })
-        .returning('*');
-
-      res.json(result[0]);
-    } else {
-      res.status(404);
-      const error = new Error('Post not found');
-      next(error);
-    }
+    res.json(result[0]);
   } catch (error) {
     next(error);
   }
@@ -130,27 +129,16 @@ router.post('/:id', async (req, res, next) => {
  *       "message": "Post not found"
  *     }
  */
-router.delete('/:id', async (req, res, next) => {
+router.delete('/:id', postExists, async (req, res, next) => {
   try {
     const { id } = req.params;
-    const post = await Post
+    const result = await Post
       .query()
+      .del()
       .where({ id })
-      .first();
+      .returning('*');
 
-    if (post) {
-      const result = await Post
-        .query()
-        .del()
-        .where({ id })
-        .returning('*');
-
-      res.json(result[0]);
-    } else {
-      res.status(404);
-      const error = new Error('Post not found');
-      next(error);
-    }
+    res.json(result[0]);
   } catch (error) {
     next(error);
   }
