@@ -26,15 +26,18 @@ describe('/api/v1/posts', () => {
 
   describe('POST /api/v1/posts', () => {
     it('responds with a json message', (done) => {
+      const post = {
+        ...examplePost,
+      };
       request(app)
         .post('/api/v1/posts')
         .set('Accept', 'application/json')
-        .send(examplePost)
+        .send(post)
         .expect('Content-Type', /json/)
         .expect(200)
         .then(({ body }) => {
-          examplePost.id = body.id;
-          expect(body).to.deep.equal(examplePost);
+          post.id = body.id;
+          expect(body).to.deep.equal(post);
           done();
         });
     });
@@ -101,6 +104,37 @@ describe('/api/v1/posts', () => {
         .expect(200)
         .then(({ body }) => {
           expect(body).to.deep.equal(examplePosts);
+          done();
+        });
+    });
+  });
+
+  describe('POST /api/v1/posts/:id', () => {
+    it('updates the post with the given id', (done) => {
+      const post = {
+        ...examplePost,
+      };
+      request(app)
+        .post('/api/v1/posts/6')
+        .set('Accept', 'application/json')
+        .send(post)
+        .expect('Content-Type', /json/)
+        .expect(200)
+        .then(({ body }) => {
+          post.id = body.id;
+          expect(body).to.deep.equal(post);
+          done();
+        });
+    });
+    it('responds with a not found message', (done) => {
+      request(app)
+        .post('/api/v1/posts/10')
+        .set('Accept', 'application/json')
+        .send({})
+        .expect('Content-Type', /json/)
+        .expect(404)
+        .then(({ body }) => {
+          expect(body.message).to.equal('Post not found');
           done();
         });
     });

@@ -48,6 +48,7 @@ Documentation for 303-blog
 	- [Create a post](#create-a-post)
 	- [Get one post by ID](#get-one-post-by-id)
 	- [Get all posts](#get-all-posts)
+	- [Update a post](#update-a-post)
 	
 
 
@@ -99,6 +100,15 @@ Response JSON:
 ```
 
 
+### Error Response
+
+Error-Response:
+
+```
+{
+  "message": "title: is a required property, author: is a required property, content: is a required property"
+}
+```
 ## <a name='get-one-post-by-id'></a> Get one post by ID
 [Back to top](#top)
 
@@ -115,7 +125,7 @@ Response JSON:
 Request URL
 
 ```
-https://303-blog.now.sh/api/v1/events/7
+https://303-blog.now.sh/api/v1/posts/7
 ```
 
 ### Success Response
@@ -199,3 +209,72 @@ Response JSON:
 ```
 
 
+## <a name='update-a-post'></a> Update a post
+[Back to top](#top)
+
+
+
+	POST /posts/:id
+
+
+
+
+
+### Body Parameters
+
+| Name     | Type       | Description                           |
+|:---------|:-----------|:--------------------------------------|
+|  title | String | <p>The title of the post.</p>_Size range: 1..200_<br>|
+|  author | String | <p>The author of the post.</p>_Size range: 1..50_<br>|
+|  content | String | <p>The content of the post.</p>|
+
+### Param Examples
+
+(string)
+Request URL
+
+```
+https://303-blog.now.sh/api/v1/posts/7
+```
+(json)
+Request JSON:
+
+```
+{
+  "title": "Hire me",
+  "author": "CJ",
+  "content": "Hire me please..."
+}
+```
+
+### Success Response
+
+Response JSON:
+
+```
+{
+  "id": 7,
+  "title": "Hire me",
+  "author": "CJ",
+  "content": "Hire me please..."
+}
+```
+
+
+### Error Response
+
+Error-Response:
+
+```
+{
+  "message": "title: is a required property, author: is a required property, content: is a required property"
+}
+```
+Error-Response:
+
+```
+HTTP/1.1 404 Not Found
+{
+  "message": "Post not found"
+}
+```
