@@ -1,14 +1,16 @@
 require('./loadEnv')();
 
-function createConfig(host, database, user, password) {
+const {
+  DB_HOST: host,
+  DB_NAME: database,
+  DB_USER: user,
+  DB_PASSWORD: password,
+} = process.env;
+
+function createConfig(connection) {
   return {
     client: 'pg',
-    connection: {
-      host,
-      database,
-      user,
-      password,
-    },
+    connection,
     migrations: {
       directory: './src/db/migrations',
     },
@@ -19,22 +21,19 @@ function createConfig(host, database, user, password) {
 }
 
 module.exports = {
-  development: createConfig(
-    process.env.DB_HOST,
-    process.env.DB_NAME,
-    process.env.DB_USER,
-    process.env.DB_PASS,
-  ),
-  test: createConfig(
-    process.env.DB_HOST,
-    process.env.DB_NAME,
-    process.env.DB_USER,
-    process.env.DB_PASS,
-  ),
+  development: createConfig({
+    host,
+    database,
+    user,
+    password,
+  }),
+  test: createConfig({
+    host,
+    database,
+    user,
+    password,
+  }),
   production: createConfig(
-    process.env.DB_HOST,
-    process.env.DB_NAME,
-    process.env.DB_USER,
-    process.env.DB_PASS,
+    `postgres://${user}:${password}@${host}:5432/${database}?ssl=true`,
   ),
 };

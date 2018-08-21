@@ -13,7 +13,8 @@
     "seed": "knex seed:run",
     "doc": "node scripts/jsonifySchemas.js && apidoc -i src/api/ -o doc/ && npm run doc-md && npm run readme",
     "doc-md": "apidoc-markdown2 -p doc/ -o API_DOC.md -t doc/API_DOC_TEMPLATE.md",
-    "readme": "cat SETUP.md API_DOC.md > README.md"
+    "readme": "cat SETUP.md API_DOC.md > README.md",
+    "deploy": "now -e NODE_ENV=production -e DB_NAME=@303-blog-db-name -e DB_USER=@303-blog-db-user -e DB_PASS=@303-blog-db-pass -e DB_HOST=@303-blog-db-host"
   },
   "keywords": [],
   "author": "CJ R. <cj@null.computer> (https://w3cj.now.sh)",
