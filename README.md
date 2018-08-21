@@ -46,6 +46,7 @@ Documentation for 303-blog
 
 - [Posts](#posts)
 	- [Create a post](#create-a-post)
+	- [Delete a post](#delete-a-post)
 	- [Get one post by ID](#get-one-post-by-id)
 	- [Get all posts](#get-all-posts)
 	- [Update a post](#update-a-post)
@@ -107,6 +108,49 @@ Error-Response:
 ```
 {
   "message": "title: is a required property, author: is a required property, content: is a required property"
+}
+```
+## <a name='delete-a-post'></a> Delete a post
+[Back to top](#top)
+
+
+
+	DELETE /posts/:id
+
+
+
+
+### Param Examples
+
+(string)
+Request URL
+
+```
+https://303-blog.now.sh/api/v1/posts/7
+```
+
+### Success Response
+
+Response JSON:
+
+```
+{
+  "id": 7,
+  "title": "All Systems Go: Choosing the Right CMS for Your Business",
+  "author": "Angelina Lim",
+  "content": "As your business grows, your web presence needs to become more complex. Putting your best digital foot forward requires working with the right Content Management System (CMS). Whether your technical and design skill levels are top-notch or non-existent, there’s a CMS out there for you. Here’s an overview to lead you to the right one."
+}
+```
+
+
+### Error Response
+
+Error-Response:
+
+```
+HTTP/1.1 404 Not Found
+{
+  "message": "Post not found"
 }
 ```
 ## <a name='get-one-post-by-id'></a> Get one post by ID

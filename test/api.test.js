@@ -139,4 +139,30 @@ describe('/api/v1/posts', () => {
         });
     });
   });
+
+  describe('DELETE /api/v1/posts/:id', () => {
+    it('deletes the post with the given id', (done) => {
+      request(app)
+        .delete('/api/v1/posts/5')
+        .set('Accept', 'application/json')
+        .expect('Content-Type', /json/)
+        .expect(200)
+        .then(({ body }) => {
+          expect(body.id).to.equal(5);
+          done();
+        });
+    });
+    it('responds with a not found message', (done) => {
+      request(app)
+        .delete('/api/v1/posts/10')
+        .set('Accept', 'application/json')
+        .send({})
+        .expect('Content-Type', /json/)
+        .expect(404)
+        .then(({ body }) => {
+          expect(body.message).to.equal('Post not found');
+          done();
+        });
+    });
+  });
 });

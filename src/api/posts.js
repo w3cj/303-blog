@@ -117,4 +117,43 @@ router.post('/:id', async (req, res, next) => {
   }
 });
 
+/**
+ * @api {delete} /posts/:id Delete a post
+ * @apiName DeletePost
+ * @apiGroup Posts
+ * @apiParamExample {string} Request URL
+ *    https://303-blog.now.sh/api/v1/posts/7
+ * @apiExample {json=../db/schemas/examples/createdPost.json} apiSuccessExample Response JSON
+ * @apiErrorExample {json} Error-Response:
+ *     HTTP/1.1 404 Not Found
+ *     {
+ *       "message": "Post not found"
+ *     }
+ */
+router.delete('/:id', async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const post = await Post
+      .query()
+      .where({ id })
+      .first();
+
+    if (post) {
+      const result = await Post
+        .query()
+        .del()
+        .where({ id })
+        .returning('*');
+
+      res.json(result[0]);
+    } else {
+      res.status(404);
+      const error = new Error('Post not found');
+      next(error);
+    }
+  } catch (error) {
+    next(error);
+  }
+});
+
 module.exports = router;
