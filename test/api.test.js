@@ -63,7 +63,7 @@ describe('/api/v1/posts', () => {
         })
         .expect('Content-Type', /json/)
         .expect(500)
-        .then(({ body }) => {  
+        .then(({ body }) => {
           expect(body.message).to.equal('title: is a required property');
           done();
         });

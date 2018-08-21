@@ -1,6 +1,10 @@
 # 303 Blog
 
+A RESTful blog API. View the deployed blog here: https://303-blog.now.sh/
+
 ## Setup
+
+This project uses knex/objection and the postgres driver. Update the `.env` files accordingly to connect to your database.
 
 ```
 npm install

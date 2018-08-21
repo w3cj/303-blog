@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node src/index.js",
     "dev": "nodemon src/index.js",
-    "lint": "eslint test src",
+    "lint": "eslint test src && echo All good! ✅ 👮‍♀️",
     "audit": "snyk test",
     "test": "./scripts/testSetup.sh && NODE_ENV=test mocha -w",
     "migrate": "knex migrate:latest",
