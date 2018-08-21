@@ -4,18 +4,31 @@ const router = express.Router();
 
 const { Post } = require('../db');
 
-async function postExists(req, res, next) {
-  const { id } = req.params;
-  const post = await Post
-    .query()
-    .where({ id })
-    .first();
-
-  if (post) {
-    next();
+function validId(req, res, next) {
+  if (Number.isNaN(Number(req.params.id))) {
+    const error = new Error('Invalid id');
+    next(error);
   } else {
-    res.status(404);
-    const error = new Error('Post not found');
+    next();
+  }
+}
+
+async function postExists(req, res, next) {
+  try {
+    const { id } = req.params;
+    const post = await Post
+      .query()
+      .where({ id })
+      .first();
+
+    if (post) {
+      next();
+    } else {
+      res.status(404);
+      const error = new Error('Post not found');
+      next(error);
+    }
+  } catch (error) {
     next(error);
   }
 }
@@ -71,7 +84,7 @@ router.get('/', async (req, res, next) => {
  *       "message": "Post not found"
  *     }
  */
-router.get('/:id', postExists, async (req, res, next) => {
+router.get('/:id', validId, postExists, async (req, res, next) => {
   try {
     const { id } = req.params;
     const post = await Post
@@ -81,6 +94,7 @@ router.get('/:id', postExists, async (req, res, next) => {
 
     res.json(post);
   } catch (error) {
+    console.log('error', error);
     next(error);
   }
 });
@@ -101,7 +115,7 @@ router.get('/:id', postExists, async (req, res, next) => {
  *       "message": "Post not found"
  *     }
  */
-router.post('/:id', postExists, async (req, res, next) => {
+router.post('/:id', validId, postExists, async (req, res, next) => {
   try {
     const { id } = req.params;
     const result = await Post
@@ -129,7 +143,7 @@ router.post('/:id', postExists, async (req, res, next) => {
  *       "message": "Post not found"
  *     }
  */
-router.delete('/:id', postExists, async (req, res, next) => {
+router.delete('/:id', validId, postExists, async (req, res, next) => {
   try {
     const { id } = req.params;
     const result = await Post

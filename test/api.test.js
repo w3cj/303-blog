@@ -93,6 +93,17 @@ describe('/api/v1/posts', () => {
           done();
         });
     });
+    it('responds with an invalid id message', (done) => {
+      request(app)
+        .get('/api/v1/posts/hire-me')
+        .set('Accept', 'application/json')
+        .expect('Content-Type', /json/)
+        .expect(500)
+        .then(({ body }) => {
+          expect(body.message).to.equal('Invalid id');
+          done();
+        });
+    });
   });
 
   describe('GET /api/v1/posts', () => {
