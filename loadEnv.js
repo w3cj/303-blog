@@ -1,6 +1,6 @@
 const dotenv = require('dotenv');
 
-module.exports = () => {  
+module.exports = () => {
   if (process.env.NODE_ENV === 'test') {
     dotenv.config({
       path: '.env.test',

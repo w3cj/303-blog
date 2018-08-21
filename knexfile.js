@@ -1,9 +1,10 @@
 require('./loadEnv')();
 
-function createConfig(database, user, password) {
+function createConfig(host, database, user, password) {
   return {
     client: 'pg',
     connection: {
+      host,
       database,
       user,
       password,
@@ -19,11 +20,19 @@ function createConfig(database, user, password) {
 
 module.exports = {
   development: createConfig(
+    process.env.DB_HOST,
     process.env.DB_NAME,
     process.env.DB_USER,
     process.env.DB_PASS,
   ),
   test: createConfig(
+    process.env.DB_HOST,
+    process.env.DB_NAME,
+    process.env.DB_USER,
+    process.env.DB_PASS,
+  ),
+  production: createConfig(
+    process.env.DB_HOST,
     process.env.DB_NAME,
     process.env.DB_USER,
     process.env.DB_PASS,
