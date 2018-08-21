@@ -4,7 +4,7 @@ const {
   DB_HOST: host,
   DB_NAME: database,
   DB_USER: user,
-  DB_PASSWORD: password,
+  DB_PASS: password,
 } = process.env;
 
 function createConfig(connection) {
