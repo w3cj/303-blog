@@ -4,9 +4,9 @@
 <%= project.description %>
 
 <% groupOrder.forEach(function (group) { -%>
-- [<%= group %>](#<%=: group | mlink %>)
+- [<%= group %>](#<%= filters.mlink(group) %>)
 	<% nameOrder[group].forEach(function (sub) { -%>
-- [<%= data[group][sub][0].title %>](#<%=: data[group][sub][0].title | mlink %>)
+- [<%= data[group][sub][0].title %>](#<%= filters.mlink(data[group][sub][0].title) %>)
 	<% }); -%>
 
 <% }); %>
@@ -15,15 +15,15 @@
 <%- prepend %>
 <% } -%>
 <% groupOrder.forEach(function (group) { -%>
-# <a name='<%=: group | mlink %>'></a> <%= group %>
+# <a name='<%= filters.mlink(group) %>'></a> <%= group %>
 
 <% nameOrder[group].forEach(function (sub) { -%>
-## <a name='<%=: data[group][sub][0].title | mlink %>'></a> <%= data[group][sub][0].title %>
+## <a name='<%= filters.mlink(data[group][sub][0].title) %>'></a> <%= data[group][sub][0].title %>
 [Back to top](#top)
 
-<%-: data[group][sub][0].description | undef %>
+<%- filters.undef(data[group][sub][0].description) %>
 
-	<%-: data[group][sub][0].type | upcase %> <%= data[group][sub][0].url %>
+	<%- filters.upcase(data[group][sub][0].type) %> <%= data[group][sub][0].url %>
 
 <% if (data[group][sub][0].header && data[group][sub][0].header.fields && data[group][sub][0].header.fields.Header && data[group][sub][0].header.fields.Header.length) { -%>
 ### Headers

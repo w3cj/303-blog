@@ -12,7 +12,7 @@
     "migrate": "knex migrate:latest",
     "seed": "knex seed:run",
     "doc": "node scripts/jsonifySchemas.js && apidoc -i src/api/ -o doc/ && npm run doc-md && npm run readme",
-    "doc-md": "apidoc-markdown2 -p doc/ -o API_DOC.md -t doc/API_DOC_TEMPLATE.md",
+    "doc-md": "apidoc-markdown3 -p doc/ -o API_DOC.md -t doc/API_DOC_TEMPLATE.md",
     "readme": "cat SETUP.md API_DOC.md > README.md",
     "deploy": "now -e NODE_ENV=production -e DB_NAME=@303-blog-db-name -e DB_USER=@303-blog-db-user -e DB_PASS=@303-blog-db-pass -e DB_HOST=@303-blog-db-host"
   },
@@ -24,7 +24,6 @@
   },
   "license": "MIT",
   "dependencies": {
-    "apidoc-markdown2": "^0.3.7",
     "dotenv": "^6.0.0",
     "express": "^4.16.3",
     "helmet": "^3.13.0",
@@ -35,6 +34,7 @@
   },
   "devDependencies": {
     "apidoc": "^0.17.6",
+    "apidoc-markdown3": "^1.0.0",
     "apidoc-plugin-example": "^0.2.0",
     "apidoc-plugin-schema": "^0.1.8",
     "chai": "^4.1.2",
