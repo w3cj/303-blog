@@ -30,9 +30,17 @@ npm run test
 * Copy `.env.sample` to `.env`, update with your db connection information
 
 ```
-npm run migrate
-npm run seed
-npm run dev
+npm run migrate # migrate database with knex
+npm run seed # seed database with knex
+npm run dev # run express server with nodemon
+```
+
+## Documentation
+
+* Generate documentation using apidoc.js and update README with markdown documenation using apidoc-markdown2.
+
+```
+npm run doc
 ```
 
 ## Package Audit with snyk
