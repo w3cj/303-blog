@@ -78,6 +78,7 @@ router.get('/', async (req, res, next) => {
  * @apiParamExample {string} Request URL
  *    https://303-blog.now.sh/api/v1/posts/7
  * @apiExample {json=../db/schemas/examples/createdPost.json} apiSuccessExample Response JSON
+ * @apiExample {json=../db/schemas/examples/invalidIdError.json} apiErrorExample Error-Response
  * @apiErrorExample {json} Error-Response:
  *     HTTP/1.1 404 Not Found
  *     {
@@ -94,7 +95,6 @@ router.get('/:id', validId, postExists, async (req, res, next) => {
 
     res.json(post);
   } catch (error) {
-    console.log('error', error);
     next(error);
   }
 });
@@ -108,6 +108,7 @@ router.get('/:id', validId, postExists, async (req, res, next) => {
  *    https://303-blog.now.sh/api/v1/posts/7
  * @apiExample {json=../db/schemas/examples/updatePost.json} apiParamExample Request JSON
  * @apiExample {json=../db/schemas/examples/updatedPost.json} apiSuccessExample Response JSON
+ * @apiExample {json=../db/schemas/examples/invalidIdError.json} apiErrorExample Error-Response
  * @apiExample {json=../db/schemas/examples/postError.json} apiErrorExample Error-Response
  * @apiErrorExample {json} Error-Response:
  *     HTTP/1.1 404 Not Found
@@ -137,6 +138,7 @@ router.post('/:id', validId, postExists, async (req, res, next) => {
  * @apiParamExample {string} Request URL
  *    https://303-blog.now.sh/api/v1/posts/7
  * @apiExample {json=../db/schemas/examples/createdPost.json} apiSuccessExample Response JSON
+ * @apiExample {json=../db/schemas/examples/invalidIdError.json} apiErrorExample Error-Response
  * @apiErrorExample {json} Error-Response:
  *     HTTP/1.1 404 Not Found
  *     {

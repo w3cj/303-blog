@@ -107,6 +107,13 @@ Response JSON:
 Error-Response:
 
 ```
+{
+  "message": "Invalid id"
+}
+```
+Error-Response:
+
+```
 HTTP/1.1 404 Not Found
 {
   "message": "Post not found"
@@ -147,6 +154,13 @@ Response JSON:
 
 ### Error Response
 
+Error-Response:
+
+```
+{
+  "message": "Invalid id"
+}
+```
 Error-Response:
 
 ```
@@ -266,6 +280,13 @@ Response JSON:
 
 ### Error Response
 
+Error-Response:
+
+```
+{
+  "message": "Invalid id"
+}
+```
 Error-Response:
 
 ```
